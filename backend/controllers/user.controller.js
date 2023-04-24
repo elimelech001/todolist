@@ -6,7 +6,7 @@ exports.getAllUsers = async (req, res) => {
     const users = await User.findAll();
     res.json(users);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to get users' });
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -24,17 +24,7 @@ exports.getUserById = async (req, res) => {
   }
 };
 
-// Controller method for creating a new user
-// exports.createUser = async (req, res) => {
-//   const { email, password } = req.body;
-//   console.log(req.body);
-//   try {
-//     const user = await User.create({ email, password });
-//     res.json(user);
-//   } catch (error) {
-//     res.status(500).json({ error: error.message });
-//   }
-// };
+
 
 // Controller method for updating a user by ID
 exports.updateUserById = async (req, res) => {

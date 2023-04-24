@@ -4,33 +4,40 @@ import React, { useEffect } from "react";
 import useTodoList from "./useTodoList";
 import Todo from "./Todo";
 import TodoForm from "./TodoForm";
+import { Box, Container, CssBaseline, List, } from "@mui/material";
+import Typography from '@mui/material/Typography';
+
 
 const TodoList = () => {
-    // Use the useTodoList custom hook to fetch todos and manage state
+  // Use the useTodoList custom hook to fetch todos and manage state
 
-    const {
-        todos,
-        addTodo,
-        editTodo,
-        deleteTodo,
-        toggleComplete,
-        updatePriority,
-        fetchTodos,
-    } = useTodoList();
+  const {
+    todos,
+    addTodo,
+    editTodo,
+    deleteTodo,
+    toggleComplete,
+    updatePriority,
+    fetchTodos,
+  } = useTodoList();
 
-    useEffect(() => {
-        fetchTodos(); // Fetch todos on component mount
-    }, []);
+  useEffect(() => {
+    fetchTodos(); // Fetch todos on component mount
+  }, []);
 
-    // Implement TodoList component UI here
+  // Implement TodoList component UI here
 
-    return (
-        <>
-        <h1>Todos</h1>
+  return (
+    <>
+      <CssBaseline />
+      <Container fixed>
+        <Typography variant="h2" gutterBottom>
+          Todo list
+        </Typography>
         <TodoForm addTodo={addTodo} />
-        <ul className="list-group">
-          {todos.map((todo) => (
-            <li key={todo.id} className="list-group-item">
+        <List sx={{ width: '100%', maxWidth: '50%', bgcolor: 'background.paper' }}>
+          {todos.map((todo) => {
+            return (
               <Todo
                 todo={todo}
                 updatePriority={updatePriority}
@@ -38,12 +45,13 @@ const TodoList = () => {
                 deleteTodo={deleteTodo}
                 editTodo={editTodo}
               />
-            </li>
-          ))}
-        </ul>
-      </>
-      
-    )
+            );
+          })}
+        </List>
+      </Container>
+
+    </>
+  )
 };
 
 export default TodoList;

@@ -1,3 +1,4 @@
+//migration//20230424111255-create_users_table
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('users', {
@@ -12,7 +13,7 @@ module.exports = {
         allowNull: false
       },
       password: {
-        type: Sequelize.STRING(12), // Set maximum length to 12
+        type: Sequelize.STRING(50), // Set maximum length to 20
         allowNull: false,
         validate: {
           len: {

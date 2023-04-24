@@ -14,10 +14,10 @@ const register = async (req, res) => {
     }
 
     // Hash the password
-    // const hashedPassword = await bcrypt.hash(password, 10);
+    // const hashedPassword = await bcrypt.hash(password, 5);
 
     // Create a new user
-    const newUser = await User.create({ email, password});
+    const newUser = await User.create({ email,password});
 
     // Generate JWT token
     const token = jwt.sign({ userId: newUser.id }, 'your-secret-key'); // Replace 'your-secret-key' with your actual secret key for JWT

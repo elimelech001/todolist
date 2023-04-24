@@ -46,7 +46,7 @@ const Todo = ({ deleteTodo, toggleComplete, editTodo, todo, updatePriority }) =>
             type="text"
             value={updatedDescription}
             onChange={event => setUpdatedDescription(event.target.value)}
-            onBlur={event => handleBlur(event, todo.id, {updatedDescription})}
+            onBlur={event => handleBlur(event, todo.id, updatedDescription)}
             autoFocus
           />
         ) : (

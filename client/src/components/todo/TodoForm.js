@@ -7,7 +7,11 @@ import SendIcon from '@mui/icons-material/Send';
 const TodoForm = ({ addTodo }) => {
     const [newTodoDescription, setNewTodoDescription] = useState(""); // State to store updated todo description
     const [updatePriority, setUpdatedPriority] = useState("medium");
-
+    const handleSubmit = (e, newTodoDescription, updatePriority) => {
+        addTodo(e, newTodoDescription, updatePriority)
+        setNewTodoDescription("")
+        setUpdatedPriority("medium")
+    }
     return (
         <>
             <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
@@ -21,6 +25,7 @@ const TodoForm = ({ addTodo }) => {
                     autoComplete="off"
                 >
                     <TextField
+                        placeholder="enter task"
                         id="outlined-basic"
                         variant="outlined"
                         name="description"
@@ -44,7 +49,7 @@ const TodoForm = ({ addTodo }) => {
                     </Select>
                 </Box>
                 <Button
-                    onClick={e => addTodo(e, newTodoDescription, updatePriority)}
+                    onClick={e => handleSubmit(e, newTodoDescription, updatePriority)}
                     variant="contained"
                     endIcon={<SendIcon />}>
                     Send

@@ -1,13 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { Navbar, Nav, Container, Button } from "react-bootstrap";
 
 const NavigationBar = () => {
   return (
+    <div>
     <Navbar bg="light" expand="lg">
       <Container>
         {/* Default component on the left */}
-        <Navbar.Brand as={Link} to="/todos">
+        <Navbar.Brand as={Link} to="/">
           Todos
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -22,6 +23,8 @@ const NavigationBar = () => {
         </Navbar.Collapse>
       </Container>
     </Navbar>
+    <Outlet/>
+    </div>
   );
 };
 

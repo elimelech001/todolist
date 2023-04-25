@@ -35,7 +35,7 @@ const LoginForm = () => {
 
                 // Save token to localStorage
                 localStorage.setItem('token', response.data.token);
-                navigate('/todos');
+                navigate('/');
                 // Perform other actions after successful login
             })
             .catch(error => {

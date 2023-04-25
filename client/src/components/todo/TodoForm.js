@@ -14,7 +14,14 @@ const TodoForm = ({ addTodo }) => {
     }
     return (
         <>
-            <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
+            <FormControl variant="filled" 
+            sx={{
+                m: 1,
+                minWidth: 120,
+                border: "1px solid #ccc", // Add border
+                borderRadius: "8px", // Add border radius
+                padding: "16px" // Add padding
+            }}>
 
                 <Box
                     component="form"
@@ -51,8 +58,8 @@ const TodoForm = ({ addTodo }) => {
                 <Button
                     onClick={e => handleSubmit(e, newTodoDescription, updatePriority)}
                     variant="contained"
-                    endIcon={<SendIcon />}>
-                    Send
+                    >
+                    Add
                 </Button>
             </FormControl>
 

@@ -1,24 +1,28 @@
-// // HomePage.js
+import React from "react";
+import { Link } from "react-router-dom";
+import { Navbar, Nav, Container, Button } from "react-bootstrap";
 
-// import React from "react";
-// import { Route, Routes } from "react-router-dom";
-// import NavbarComponent from "./Navbar";
-// import Login from "../auth/LoginPage";
-// import TodoList from "../todo/TodoList";
-// import RegisterForm from "../auth/RegistrationPage";
+const NavigationBar = () => {
+  return (
+    <Navbar bg="light" expand="lg">
+      <Container>
+        {/* Default component on the left */}
+        <Navbar.Brand as={Link} to="/todos">
+          Todos
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ml-auto">
+            {/* Move the Users link to the top right corner as a button */}
+            <Button as={Link} to="/auth" variant="primary" className="ml-2">
+              login
+            </Button>
+           
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+};
 
-// const HomePage = () => {
-//   return (
-//     <div>
-//       <NavbarComponent />
-//       <Routes>
-//         <Route exact path="/" render={() => <div>Home Page Content</div>} />
-//         <Route path="/todolist" element={<TodoList/>} />
-//         <Route path="/registration"  element={<RegisterForm/>}  />
-//         <Route path="/login"  element={<Login/>}  />
-//       </Routes>
-//     </div>
-//   // )
-// };
-
-// export default HomePage;
+export default NavigationBar;

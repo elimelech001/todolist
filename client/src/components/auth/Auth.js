@@ -28,7 +28,7 @@ const LoginForm = () => {
         e.preventDefault();
 
         // Send login data to backend API for authentication
-        axios.post('http://localhost:5000/users/login', { email, password })
+        axios.post(`http://localhost:5000/users/${isLogin ? 'Login' : 'Register'}`, { email, password })
             .then(response => {
                 console.log(response.data);
                 // Handle login success or failure

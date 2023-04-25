@@ -32,9 +32,16 @@ const TodoList = () => {
 
   return (
     <>
-      <CssBaseline />
-      <Container fixed>
-        <Typography variant="h2" gutterBottom>
+ <Container
+      fixed
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh" // Set minimum height to the viewport height for vertical centering
+      }}
+    >        <Typography variant="h3" gutterBottom>
           Todo list
         </Typography>
         <TodoForm addTodo={addTodo} />

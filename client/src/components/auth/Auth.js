@@ -40,6 +40,7 @@ const LoginForm = () => {
             })
             .catch(error => {
                 console.error(error.message);
+                console.log(error.response.data);
                 alert(error.response.data.error)
                 // Handle error
             });

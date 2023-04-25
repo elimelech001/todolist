@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
-const  User  = require('../models/user.model'); // Assuming you have a User model defined
-
+const User = require('../models/user.model'); // Assuming you have a User model defined
+const {development} = require('../config/config')
 const authMiddleware = async (req, res, next) => {
   try {
     const token = req.header('Authorization'); // Assuming the token is sent in the Authorization header
@@ -8,7 +8,7 @@ const authMiddleware = async (req, res, next) => {
       return res.status(401).json({ error: 'Authorization token missing' });
     }
 
-    const decoded = jwt.verify(token, 'your-secret-key'); // Replace 'your-secret-key' with your actual secret key for JWT
+    const decoded = jwt.verify(token, development.secretKey); // Replace 'your-secret-key' with your actual secret key for JWT
 
     const user = await User.findOne({ where: { id: decoded.userId } });
 

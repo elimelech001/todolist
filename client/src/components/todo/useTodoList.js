@@ -5,7 +5,7 @@ const useTodoList = () => {
     const [todos, setTodos] = useState([]);
     const token = localStorage.getItem("token");
     const headers = {
-        Authorization: token,
+        Authorization: token,  
     }
 
     // get todos
@@ -15,7 +15,7 @@ const useTodoList = () => {
             const fetchedTodos = response.data;
             setTodos(fetchedTodos);
         } catch (error) {
-            alert(`Error: Error toggling todo status - ${error.response.data.message}`);
+            alert(`Error: Error toggling todo status - ${error.response.data.error}`);
         }
     };
 
@@ -34,7 +34,8 @@ const useTodoList = () => {
             const addedTodo = response.data;
             setTodos([...todos, addedTodo]);
         } catch (error) {
-            alert(`Error: Error toggling todo status - ${error.response.data.message}`);
+            console.log(error.response.data.error);
+            alert(`Error: Error toggling todo status - ${error.response.data.error||error.response.data.message}`);
         }
     };
 
@@ -46,7 +47,7 @@ const useTodoList = () => {
             });
             setTodos(todos.filter((todo) => todo.id !== id));
         } catch (error) {
-            alert(`Error: Error toggling todo status - ${error.response.data.message}`);
+            alert(`Error: Error toggling todo status - ${error.response.data.error||error.response.data.message}`);
         }
     };
 
@@ -61,7 +62,7 @@ const useTodoList = () => {
                 todos.map((todo) => (todo.id === id ? { ...todo, description: description } : todo))
             );
         } catch (error) {
-            alert(`Error: Error toggling todo status - ${error.response.data.message}`);
+            alert(`Error: Error toggling todo status - ${error.response.data.error||error.response.data.message}`);
         }
     };
 
@@ -73,7 +74,7 @@ const useTodoList = () => {
             setTodos(todos.map(item => item.id === todo.id ? { ...item, completed: !todo.completed } : item));
         } catch (error) {
             console.log(error);
-            alert(`Error: Error toggling todo status - ${error.response.data.message}`);
+            alert(`Error: Error toggling todo status - ${error.response.data.error||error.response.data.message}`);
         }
     };
 
@@ -91,7 +92,7 @@ const useTodoList = () => {
             );
         } catch (error) {
             console.log(error);
-            alert(`Error: Error toggling todo status - ${error.response.data.message}`);        }
+            alert(`Error: Error toggling todo status - ${error.response.data.error}`);        }
     };
 
     return {

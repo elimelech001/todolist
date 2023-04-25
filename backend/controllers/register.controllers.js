@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const  User  = require('../models/user.model'); // Assuming you have a User model defined
-
+const User = require('../models/user.model'); // Assuming you have a User model defined
+const {development} = require('../config/config')
 const register = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -17,10 +17,9 @@ const register = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Create a new user
-    const newUser = await User.create({ email,password});
-
+    const newUser = await User.create({ email, password });
     // Generate JWT token
-    const token = jwt.sign({ userId: newUser.id }, 'your-secret-key'); // Replace 'your-secret-key' with your actual secret key for JWT
+    const token = jwt.sign({ userId: newUser.id }, development.secretKey); // Replace 'your-secret-key' with your actual secret key for JWT
 
     // Send success response with token
     return res.status(201).json({ token });

@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user.model'); // Assuming you have a User model defined
-
+const {development} = require('../config/config')
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -21,7 +21,7 @@ const login = async (req, res) => {
     }
 
     // Generate JWT token
-    const token = jwt.sign({ userId: user.id }, 'your-secret-key'); // Replace 'your-secret-key' with your actual secret key for JWT
+    const token = jwt.sign({ userId: user.id }, development.secretKey); 
 
     // Send success response with token
     return res.status(200).json({ token });

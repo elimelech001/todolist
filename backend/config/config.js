@@ -9,6 +9,7 @@ module.exports = {
       port: 5432, // Your PostgreSQL port
       dialect: 'postgres',
       logging: false, // Disable logging
+      secretKey:"my-secret-key"
     },
   };
   

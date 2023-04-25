@@ -8,6 +8,10 @@ const TodoForm = ({ addTodo }) => {
     const [newTodoDescription, setNewTodoDescription] = useState(""); // State to store updated todo description
     const [updatePriority, setUpdatedPriority] = useState("medium");
     const handleSubmit = (e, newTodoDescription, updatePriority) => {
+        if(!newTodoDescription){
+            alert("please fill out feild")
+            return 
+        }
         addTodo(e, newTodoDescription, updatePriority)
         setNewTodoDescription("")
         setUpdatedPriority("medium")

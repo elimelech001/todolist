@@ -25,7 +25,7 @@ const TodoList = () => {
     fetchTodos(); // Fetch todos on component mount
   }, []);
   const sortedTodos = todos.sort((a, b) => {
-    const priorityOrder = { "high": 0, "medium": 1, "low": 2 }; // Define priority order
+    const priorityOrder = { "high": 2, "medium": 1, "low": 0 }; // Define priority order
     return priorityOrder[b.priority] - priorityOrder[a.priority]; // Sort in descending order
   });
   // Implement TodoList component UI here

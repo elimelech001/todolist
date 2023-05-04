@@ -6,4 +6,4 @@ node_modules/
 *.env.development
 *.env.test
 *.env.production
-backend/config/config.js
+./backend/config/config.js

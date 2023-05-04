@@ -1,5 +1,6 @@
 // app.js
-require('dotenv').config
+require('dotenv').config()
+
 console.log(process.env.username);
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -12,7 +13,7 @@ const Todo = require('./models/todo.model');
 
 const app = express();
 
-app.use(cors())
+app.use(cors()) 
 
 app.use(express.json());
 

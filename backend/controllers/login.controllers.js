@@ -1,4 +1,3 @@
-const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user.model'); // Assuming you have a User model defined
 const {development} = require('../config/config')
